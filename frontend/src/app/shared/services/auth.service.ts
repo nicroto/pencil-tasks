@@ -38,6 +38,10 @@ export class AuthService {
     return this.afAuth.signOut();
   }
 
+  isUserLogged(): boolean {
+    return !!this.user$;
+  }
+
   private setUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {

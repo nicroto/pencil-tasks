@@ -1,1 +1,15 @@
-<div>header</div>
+<div class="header">
+  <a routerLink="/" class="link-container">
+    <img class="logo-container" src="/assets/logo.png"/>
+  </a>
+  <div class="options">
+    <div class="option" (click)="signOut()" *ngIf="isUserLogged(); else elseBlock">
+      SIGN OUT
+    </div>
+    <ng-template #elseBlock>
+        <div class="option">
+          SIGN IN
+        </div>
+    </ng-template>
+  </div>
+</div>
