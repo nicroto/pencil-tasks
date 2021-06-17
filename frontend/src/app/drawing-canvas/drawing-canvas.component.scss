@@ -1,0 +1,10 @@
+.drawing-canvas {
+  display: flex;
+  justify-content: space-between;
+  width: 740px;
+  margin: auto;
+
+  canvas {
+    border: 1px solid #eee;
+  }
+}
