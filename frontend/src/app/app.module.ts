@@ -14,6 +14,9 @@ import { LogoComponent } from './logo/logo.component';
 
 import { AuthService } from './shared/services/auth.service';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
+import { DrawingCanvasComponent } from './drawing-canvas/drawing-canvas.component';
+import { DrawingToolboxComponent } from './drawing-toolbox/drawing-toolbox.component';
+import { DrawingToolComponent } from './drawing-tool/drawing-tool.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { CustomButtonComponent } from './custom-button/custom-button.component';
     HomeComponent,
     HeaderComponent,
     LogoComponent,
-    CustomButtonComponent
+    CustomButtonComponent,
+    DrawingCanvasComponent,
+    DrawingToolboxComponent,
+    DrawingToolComponent
   ],
   imports: [
     BrowserModule,
