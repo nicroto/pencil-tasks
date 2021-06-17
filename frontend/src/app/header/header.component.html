@@ -1,6 +1,6 @@
 <div class="header">
   <a routerLink="/" class="link-container">
-    <img class="logo-container" src="/assets/logo.png"/>
+    <app-logo></app-logo>
   </a>
   <div class="options">
     <div class="option" (click)="signOut()" *ngIf="isUserLogged; else elseBlock">
