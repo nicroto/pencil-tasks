@@ -1,5 +1,7 @@
 <div class="drawing-toolbox">
   <app-drawing-tool></app-drawing-tool>
   <app-drawing-tool></app-drawing-tool>
-  <app-drawing-tool></app-drawing-tool>
+  <app-drawing-tool>
+    <input readonly [(colorPicker)]="color" [style.background]="color" class="color-input"/>
+  </app-drawing-tool>
 </div>

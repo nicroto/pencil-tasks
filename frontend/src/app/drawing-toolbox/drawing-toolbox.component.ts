@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrawingToolboxComponent implements OnInit {
 
+  color: any;
+
   constructor() { }
 
   ngOnInit(): void {
