@@ -1,0 +1,17 @@
+diff --git a/node_modules/@types/fabric/fabric-impl.d.ts b/node_modules/@types/fabric/fabric-impl.d.ts
+index 533a2a0..0b8f78b 100755
+--- a/node_modules/@types/fabric/fabric-impl.d.ts
++++ b/node_modules/@types/fabric/fabric-impl.d.ts
+@@ -5847,6 +5847,12 @@ export class PatternBrush extends PencilBrush {
+     createPath(pathData: string): Path;
+ }
+ export class PencilBrush extends BaseBrush {
++    /**
++     * Constructor
++     * @param {fabric.Canvas} the canvas on which this brush is going to be used-on
++     * @return {fabric.PencilBrush} thisArg
++     */
++    constructor(canvas: Canvas);
+     /**
+      * Converts points to SVG path
+      * @param points Array of points
