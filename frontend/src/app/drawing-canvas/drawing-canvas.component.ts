@@ -27,6 +27,11 @@ export class DrawingCanvasComponent implements OnInit {
         preserveObjectStacking: true
       });
 
+      let brush = new fabric.PencilBrush(this._canvas);
+      brush.color = "#000000";
+      this._canvas.freeDrawingBrush = brush;
+      this._canvas.isDrawingMode = true;
+
       this._canvas.on('mouse:down', this._mouseDown);
       this._canvas.on('mouse:move', this._mouseMove);
       this._canvas.on('mouse:up', this._mouseUp);
