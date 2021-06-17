@@ -1,0 +1,13 @@
+.drawing-toolbox {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 130px;
+  border: 1px solid #eee;
+
+  app-drawing-tool {
+    margin: 5px
+  }
+}
