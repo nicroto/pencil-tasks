@@ -1,1 +1,8 @@
-<p>signin works!</p>
+<div className="sign-in">
+    <div className="buttons">
+      <app-custom-button
+        (click)="signInWithGoogle()"
+        [extraClasses]="['google-sign-in']"
+      >Sign In With Google</app-custom-button>
+    </div>
+</div>

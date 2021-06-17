@@ -5,53 +5,57 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user$: any;
+
+  user: Observable<User | null | undefined>;
 
   constructor(
-    public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,
-    public router: Router
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router,
   ) {
-    this.afAuth.onAuthStateChanged((user) => {
-      if (user) {
-        this.user$ = this.setUserData(user);
-        this.router.navigateByUrl('home');
-      } else {
-        this.router.navigateByUrl('signin');
-      }
-      console.log (`onAuthStateChanged -> User: ${user}`);
-    });
+      this.user = this.afAuth.authState.pipe(
+        switchMap(user => {
+          if (user) {
+            return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          } else {
+            return of(null);
+          }
+        })
+      );
   }
 
-  loginWithGoogle() {
+  signInWithGoogle() {
     let provider = new firebase.auth.GoogleAuthProvider();
-    return this.afAuth.signInWithPopup(provider);
+
+    return this.afAuth.signInWithPopup(provider)
+    .then((credential) => {
+      this.updateUserData(credential.user)
+    })
+    .catch(error => console.error(error));
   }
 
   signOut() {
     return this.afAuth.signOut();
   }
 
-  isUserLogged(): boolean {
-    return !!this.user$;
+  // Sets user data to firestore on login/signup
+  private updateUserData(user: any) {
+    const userRef = this.afs.collection('users').doc(user.uid);
+      const data: User = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL
+      }
+      return userRef.set(data, { merge: true });
   }
 
-  private setUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
-    };
-    return userRef.set(userData, {
-      merge: true
-    });
-  }
 }

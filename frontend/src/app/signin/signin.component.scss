@@ -1,0 +1,21 @@
+.sign-in {
+  display: flex;
+  width: 30vw;
+  margin: 10px 0;
+  flex-direction: column;
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .custom-button.google-sign-in {
+      background-color: #4285f4;
+      color: #fff;
+
+      &:hover {
+        background-color: #357ae8;
+        border: none;
+      }
+    }
+  }
+}

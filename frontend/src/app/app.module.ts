@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { LogoComponent } from './logo/logo.component';
 
 import { AuthService } from './shared/services/auth.service';
+import { CustomButtonComponent } from './custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthService } from './shared/services/auth.service';
     SigninComponent,
     HomeComponent,
     HeaderComponent,
-    LogoComponent
+    LogoComponent,
+    CustomButtonComponent
   ],
   imports: [
     BrowserModule,
