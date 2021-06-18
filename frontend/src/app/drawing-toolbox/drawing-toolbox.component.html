@@ -2,6 +2,6 @@
   <app-drawing-tool></app-drawing-tool>
   <app-drawing-tool></app-drawing-tool>
   <app-drawing-tool>
-    <input readonly [(colorPicker)]="color" [style.background]="color" class="color-input"/>
+    <input readonly [(colorPicker)]="color" [style.background]="color" class="color-input" (colorPickerChange)="onColorChanged($event)"/>
   </app-drawing-tool>
 </div>

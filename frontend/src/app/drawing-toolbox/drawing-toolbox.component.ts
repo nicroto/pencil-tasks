@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DrawingService } from '../shared/services/drawing.service';
+import { fabric } from 'fabric';
 
 @Component({
   selector: 'app-drawing-toolbox',
@@ -8,10 +11,26 @@ import { Component, OnInit } from '@angular/core';
 export class DrawingToolboxComponent implements OnInit {
 
   color: any;
+  private colorChangeSubscription: Subscription;
 
-  constructor() { }
+  constructor(
+    public viewContainerRef: ViewContainerRef,
+    private drawing: DrawingService
+  ) {
+    this.colorChangeSubscription = this.drawing.color.subscribe(value => {
+      this.color = `#${value.toHex()}`;
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.colorChangeSubscription.unsubscribe();
+  }
+
+  onColorChanged(value: string): void {
+    this.drawing.color.next (new fabric.Color(value));
   }
 
 }
