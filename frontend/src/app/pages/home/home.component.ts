@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { DocumentService } from '../shared/services/document.service';
-import { Document } from '../shared/types/document.class';
+import { DocumentService } from '../../shared/services/document.service';
+import { Document } from '../../shared/types/document.class';
 
 @Component({
   selector: 'app-home',

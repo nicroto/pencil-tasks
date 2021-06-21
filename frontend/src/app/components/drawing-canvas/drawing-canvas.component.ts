@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { fabric } from 'fabric';
-import { DrawingService } from '../shared/services/drawing.service';
-import { Document } from '../shared/types/document.class';
+import { DrawingService } from '../../shared/services/drawing.service';
+import { Document } from '../../shared/types/document.class';
 
 @Component({
   selector: 'app-drawing-canvas',

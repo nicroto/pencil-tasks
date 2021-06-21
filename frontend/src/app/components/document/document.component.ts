@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Document } from '../shared/types/document.class';
+import { Document } from '../../shared/types/document.class';
 
 @Component({
   selector: 'app-document',

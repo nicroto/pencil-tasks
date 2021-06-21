@@ -8,17 +8,17 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SigninComponent } from './signin/signin.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { LogoComponent } from './logo/logo.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 import { AuthService } from './shared/services/auth.service';
-import { CustomButtonComponent } from './custom-button/custom-button.component';
-import { DrawingCanvasComponent } from './drawing-canvas/drawing-canvas.component';
-import { DrawingToolboxComponent } from './drawing-toolbox/drawing-toolbox.component';
-import { DrawingToolComponent } from './drawing-tool/drawing-tool.component';
-import { DocumentComponent } from './document/document.component';
+import { CustomButtonComponent } from './components/custom-button/custom-button.component';
+import { DrawingCanvasComponent } from './components/drawing-canvas/drawing-canvas.component';
+import { DrawingToolboxComponent } from './components/drawing-toolbox/drawing-toolbox.component';
+import { DrawingToolComponent } from './components/drawing-tool/drawing-tool.component';
+import { DocumentComponent } from './components/document/document.component';
 
 @NgModule({
   declarations: [

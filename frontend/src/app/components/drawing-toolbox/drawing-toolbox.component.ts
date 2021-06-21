@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { DrawingService } from '../shared/services/drawing.service';
+import { DrawingService } from '../../shared/services/drawing.service';
 import { fabric } from 'fabric';
 
 @Component({
