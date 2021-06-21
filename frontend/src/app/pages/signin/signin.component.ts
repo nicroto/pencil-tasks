@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
+import { ROUTING_PATH } from '../../shared/services/routing-path.const';
 
 @Component({
   selector: 'app-signin',
@@ -21,7 +22,7 @@ export class SigninComponent implements OnInit {
   signInWithGoogle(): void {
     this.auth.signInWithGoogle()
     .then(() => {
-      this.router.navigate(['/']);
+      this.router.navigate([ROUTING_PATH.HOME]);
     });
   }
 

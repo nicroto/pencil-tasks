@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { tap, map, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { ROUTING_PATH } from '../services/routing-path.const';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class AuthGuard implements CanActivate {
       map(loggedIn => {
         if (!loggedIn) {
           console.log(`User hasn't logged: Redirecting to signin...`)
-          this.router.navigate(['/signin']);
+          this.router.navigate([ROUTING_PATH.SIGNIN]);
           return false;
         }
         return true;

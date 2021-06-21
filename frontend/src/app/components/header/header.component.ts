@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
+import { ROUTING_PATH } from '../../shared/services/routing-path.const';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit {
     this.auth.signOut()
     .then(() => {
       console.log('User is no logged logged: Redirecting to / ...')
-      this.router.navigate(['/signin']);
+      this.router.navigate([ROUTING_PATH.SIGNIN]);
     });
   }
 
