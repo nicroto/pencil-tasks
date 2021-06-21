@@ -13,7 +13,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 
-import { AuthService } from './shared/services/auth.service';
 import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 import { DrawingCanvasComponent } from './components/drawing-canvas/drawing-canvas.component';
 import { DrawingToolboxComponent } from './components/drawing-toolbox/drawing-toolbox.component';
@@ -41,7 +40,7 @@ import { DocumentComponent } from './components/document/document.component';
     AngularFirestoreModule,
     ColorPickerModule,
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
