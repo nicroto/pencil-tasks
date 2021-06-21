@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Document } from '../types/document.class';
 import { IDBDocument } from '../types/db-document.interface';
+import { DB } from '../services/db.const';
 
 
 @Injectable({
@@ -34,7 +35,7 @@ export class DocumentService {
       if (this.userId) {
 
         this.afs.collection(
-          'documents',
+          DB.COLLECTION.DOCUMENTS,
           ref => ref.where('owners', 'array-contains', this.userId)
         ).get().toPromise()
           .then(querySnapshot => {

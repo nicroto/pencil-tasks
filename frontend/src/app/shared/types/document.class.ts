@@ -2,6 +2,7 @@ import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@
 import { Subject } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { IDBDocument } from './db-document.interface';
+import { DB } from '../services/db.const';
 
 export class Document {
 
@@ -24,7 +25,7 @@ export class Document {
     };
     let dbRef: any = null;
 
-    await afs.collection<IDBDocument>('documents').add(docData)
+    await afs.collection<IDBDocument>(DB.COLLECTION.DOCUMENTS).add(docData)
       .then(ref => {
         dbRef = ref;
       });

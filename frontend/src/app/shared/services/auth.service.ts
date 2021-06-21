@@ -8,6 +8,7 @@ import 'firebase/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IUser } from '../types/user.interface';
+import { DB } from '../services/db.const';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class AuthService {
 
   // Sets user data to firestore on login/signup
   private updateUserData(user: any) {
-    const userRef = this.afs.collection('users').doc(user.uid);
+    const userRef = this.afs.collection(DB.COLLECTION.USERS).doc(user.uid);
     const data: IUser = {
       uid: user.uid,
       email: user.email,
