@@ -1,45 +1,56 @@
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Subject, Subscription } from 'rxjs';
 import { fabric } from 'fabric';
 import { AuthService } from './auth.service';
-import { Document } from '../types/document';
+import { DocumentUtilsService } from './document-utils.service';
+import { IDocument } from '../types/document.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerSyncService {
 
-  private user: any = null;
-
+  // ----> Input flowing data
   public data = new Subject<string> ();
 
   constructor(
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private documentUtils: DocumentUtilsService
   ) {
-    this.auth.user.subscribe(user => {
-      this.user = user;
-    });
-
-    this.data.subscribe(data => {
-      if (this.user) {
-        this.uploadDoc (data);
-      }
-    })
   }
 
-  private uploadDoc(data: string) {
-    const userRef = this.afs.collection('users').doc(this.user.uid);
-    const documentRef = this.afs.collection('documents', ref =>
-      ref.where('owner', '==', userRef)
-    );
-    const doc: Document = {
-      data: data,
-      version: 0,
-      owner: userRef
-    };
-
-    return documentRef.set(doc, { merge: true });
+  public async syncInitialState(user: any): Promise<string> {
+    let localDoc = this.getLocalDocument(user.uid);
+    let serverDoc = await this.getServerDocument(user.uid)
+    if (this.isServerDocumentOutdated (localDoc, serverDoc)) {
+      return this.updateServerDocument (localDoc);
+    } else {
+      this.preserveLocalDocument (serverDoc);
+    }
   }
+
+  private getLocalDocument (uid: string): any {
+    let documentString = localStorage.getItem (uid);
+
+    return documentString ? JSON.parse(documentString) : { version: 0 };
+  }
+
+  private getServerDocument (): any {
+
+  }
+
+  private isServerDocumentOutdated (): boolean {
+
+  }
+
+  private async updateServerDocument () {
+
+  }
+
+  private preserveLocalDocument (): void {
+
+  }
+
 }

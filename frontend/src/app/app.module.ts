@@ -18,6 +18,7 @@ import { CustomButtonComponent } from './custom-button/custom-button.component';
 import { DrawingCanvasComponent } from './drawing-canvas/drawing-canvas.component';
 import { DrawingToolboxComponent } from './drawing-toolbox/drawing-toolbox.component';
 import { DrawingToolComponent } from './drawing-tool/drawing-tool.component';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DrawingToolComponent } from './drawing-tool/drawing-tool.component';
     CustomButtonComponent,
     DrawingCanvasComponent,
     DrawingToolboxComponent,
-    DrawingToolComponent
+    DrawingToolComponent,
+    DocumentComponent
   ],
   imports: [
     BrowserModule,
