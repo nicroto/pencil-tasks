@@ -17,6 +17,10 @@ export class DocumentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getCanvasData(): string {
+    return this.document ? this.document.getData() : '';
+  }
+
   async onCanvasChange(data: string){
     if (this.document)
       await this.document.updateDocumentData(this.afs, data);
