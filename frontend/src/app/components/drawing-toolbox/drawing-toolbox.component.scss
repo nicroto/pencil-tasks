@@ -8,7 +8,8 @@
   border: 1px solid #eee;
 
   app-drawing-tool {
-    margin: 5px
+    margin: 5px;
+    cursor: pointer;
   }
 
   input.color-input {
@@ -18,5 +19,10 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .icon-image {
+    width: 100%;
+    height: 100%;
   }
 }

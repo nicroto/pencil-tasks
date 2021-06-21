@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DrawingService } from '../../shared/services/drawing.service';
 import { fabric } from 'fabric';
@@ -10,7 +10,10 @@ import { fabric } from 'fabric';
 })
 export class DrawingToolboxComponent implements OnInit {
 
-  color: any;
+  public color: any;
+  
+  @Output() public clearCanvas = new EventEmitter<void> ();
+
   private colorChangeSubscription: Subscription;
 
   constructor(
@@ -31,6 +34,10 @@ export class DrawingToolboxComponent implements OnInit {
 
   onColorChanged(value: string): void {
     this.drawing.color.next (new fabric.Color(value));
+  }
+
+  onDeleteClick(): void {
+    this.clearCanvas.emit();
   }
 
 }

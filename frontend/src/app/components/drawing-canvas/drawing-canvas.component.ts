@@ -55,14 +55,10 @@ export class DrawingCanvasComponent implements OnInit {
     this.zone.runOutsideAngular(() => {
       this._canvas = new fabric.Canvas('canvasElement', CANVAS_SETTINGS.BASE);
 
-      let brush = new fabric.PencilBrush(this._canvas);
-      this._canvas.freeDrawingBrush = brush;
-      this._canvas.isDrawingMode = true;
-
       this._canvas.on(CANVAS_SETTINGS.EVENTS.OBJECT_ADDED, this._objectAdded);
       this._canvas.on(CANVAS_SETTINGS.EVENTS.OBJECT_MODIFIED, this._objectModified);
 
-      this.drawing.color.next(new fabric.Color(CANVAS_SETTINGS.DRAWING_COLOR));
+      this._setupCanvasContext();
 
       this.loadDataFromDocument();
     });
@@ -70,6 +66,21 @@ export class DrawingCanvasComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.colorChangeSubscription.unsubscribe();
+  }
+
+  onClearCanvas(): void {
+    this._canvas?.clear ();
+    this._setupCanvasContext ();
+    this.__onChange({} as fabric.IEvent);
+  }
+
+  private _setupCanvasContext(): void {
+    if (this._canvas) {
+      let brush = new fabric.PencilBrush(this._canvas);
+      this._canvas.freeDrawingBrush = brush;
+      this._canvas.isDrawingMode = true;
+      this.drawing.color.next(new fabric.Color(CANVAS_SETTINGS.DRAWING_COLOR));
+    }
   }
 
   private __onChange(evt: fabric.IEvent): void {

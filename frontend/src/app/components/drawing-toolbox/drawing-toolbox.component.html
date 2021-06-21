@@ -1,7 +1,8 @@
 <div class="drawing-toolbox">
-  <app-drawing-tool></app-drawing-tool>
-  <app-drawing-tool></app-drawing-tool>
   <app-drawing-tool>
     <input readonly [(colorPicker)]="color" [style.background]="color" class="color-input" (colorPickerChange)="onColorChanged($event)"/>
+  </app-drawing-tool>
+  <app-drawing-tool (click)="onDeleteClick()">
+    <img class="icon-image" src="assets/Trash Icon.png"/>
   </app-drawing-tool>
 </div>
